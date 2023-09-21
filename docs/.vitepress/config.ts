@@ -17,6 +17,7 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: '首页', link: '/' },
+      { text: '面试题库', link: '/src/js基础面试题/' },
       { text: 'TS算法', link: '/src/leetcode每日一题/' },
       { text: '随笔', link: '/src/随笔/' },
     ],
