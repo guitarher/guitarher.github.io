@@ -1,0 +1,24 @@
+{
+  "name": "gitguitar-blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vitepress": "^1.0.0-rc.14"
+  },
+  "dependencies": {
+    "axios": "^1.5.0",
+    "fast-glob": "^3.3.1",
+    "fs-extra": "^11.1.1"
+  }
+}
