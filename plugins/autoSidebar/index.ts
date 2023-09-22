@@ -26,7 +26,7 @@ export default function (options: Options = {}): Plugin {
       // 从vitepress配置中获取文档根路径与要排除的文档
       const {
         vitepress: {
-          userConfig: { srcExclude = [], srcDir = './docs/src' },
+          userConfig: { srcExclude = [], srcDir = './' },
           site: {
             themeConfig: { nav },
           },
@@ -54,7 +54,7 @@ export default function (options: Options = {}): Plugin {
 
       // 生成侧边栏目录
       const sidebar = generateSidebar(data)
-      // _config.vitepress.site.themeConfig.sidebar = sidebar
+      _config.vitepress.site.themeConfig.sidebar = sidebar
 
       return _config
     },
@@ -141,12 +141,10 @@ function generateSidebar(structuredData: FileInfo[]): DefaultTheme.Sidebar {
     if(name === 'src'){
       for (const { name, children: subChildren } of children) {
         const traverArr = subChildren.filter(v => v.name !== 'index.md')
-        sidebar[`/src/${name}/`] = traverseSubFile(traverArr, `./src/${name}`)
+        sidebar[`/src/${name}/`] = traverseSubFile(traverArr, `/src/${name}`)
       }
     }
   }
-
-  console.log('sidebar', sidebar)
 
   function traverseSubFile(subData: FileInfo[], parentPath: string): DefaultTheme.SidebarItem[] {
     return subData.map((file) => {

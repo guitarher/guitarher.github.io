@@ -36,7 +36,13 @@ const btnClick = () => {
 
 <style scoped>
 .container{
-  height: calc(100vh - 64px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* width: 100%;
+  height: calc(100vh - 64px); */
   background:  no-repeat cover;
   background: center / cover no-repeat url('https://api.vvhan.com/api/bing?size=640x480&rand=sj');
 }

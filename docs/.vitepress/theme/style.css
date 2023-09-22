@@ -133,3 +133,15 @@
   --docsearch-primary-color: var(--vp-c-brand-1) !important;
 }
 
+.VPContent{
+  position: relative;
+}
+
+.VPDoc{
+  padding: 0 !important;
+}
+
+.aside-curtain{
+  opacity: 0;
+}
+
