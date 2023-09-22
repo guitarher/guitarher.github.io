@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress'
-import autoSideBar from '../../plugins/autoSidebar'
+import autoSideBar from './plugins/autoSidebar'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
