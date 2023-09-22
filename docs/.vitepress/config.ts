@@ -3,7 +3,6 @@ import autoSideBar from './plugins/autoSidebar'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: '/docs',
   title: "范范的前端小记",
   description: "A VitePress Site",
   head: [
