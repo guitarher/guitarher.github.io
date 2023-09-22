@@ -145,3 +145,12 @@
   opacity: 0;
 }
 
+/* .curtain{
+  display: none !important;
+} */
+.vp-code-dark{
+  background: rgb(243, 243, 243) !important;
+}
+.vp-code-light{
+  background: #1a1a1a !important;
+}

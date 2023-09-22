@@ -9,6 +9,7 @@ import { FileInfo, Options } from './types'
 export default function (options: Options = {}): Plugin {
   return {
     name: 'auto-sidebar',
+    enforce: 'post',
 
     handleHotUpdate(context){
       const { file, modules, server } = context
@@ -16,8 +17,13 @@ export default function (options: Options = {}): Plugin {
       // 过滤非 md 文件
       if (extname(file) !== '.md') return;
       
-      // 如果文件变化重新开启服务
-      server.restart()
+      try {
+        // 如果文件变化重新开启服务
+        server.restart()
+      } catch (error) {
+        console.error(error)
+        server.restart()
+      }
     },
 
     async config(config) {
@@ -55,6 +61,24 @@ export default function (options: Options = {}): Plugin {
       // 生成侧边栏目录
       const sidebar = generateSidebar(data)
       _config.vitepress.site.themeConfig.sidebar = sidebar
+
+      
+      // @ts-ignore
+      const filePath = join(__dirname, '../../sidebar.ts')
+      await clearFile(filePath) // 先清空内容
+
+      const content = `
+        export default ${JSON.stringify(sidebar)}
+      `
+
+      fs.writeFile(filePath, content , (error) => {
+          // 创建失败
+          if(error){
+            console.log(`创建失败：${error}`)
+          }
+          // 创建成功
+          console.log(`创建成功！`)
+      })
 
       return _config
     },
@@ -147,6 +171,18 @@ function generateSidebar(structuredData: FileInfo[]): DefaultTheme.Sidebar {
   }
 
   function traverseSubFile(subData: FileInfo[], parentPath: string): DefaultTheme.SidebarItem[] {
+    const sortArr = subData.sort((pre, cur) => {
+      const { name: preName } = pre
+      const { name: curName } = cur
+      const preNameArr = preName.split('.')
+      const curNameArr = curName.split('.')
+
+      if(!isNaN(+preNameArr[0]) && !isNaN(+curNameArr[0])){
+        return (+preNameArr[0]) - (+curNameArr[0])
+      }
+
+      return -1
+    })
     return subData.map((file) => {
       const filePath = `${parentPath}/${file.name}`
       const fileName = file.title || file.name.replace('.md', '')
@@ -163,4 +199,22 @@ function generateSidebar(structuredData: FileInfo[]): DefaultTheme.Sidebar {
   }
 
   return sidebar
+}
+
+/**
+ * 清空文件内容
+ * @param filePath 
+ * @returns 
+ */
+function clearFile(filePath: string) {
+  // 写入文件是异步过程，需要使用promise保证文件操作完成 
+  return new Promise(resolve => {
+    fs.writeFile(filePath, '', "utf-8", function(err) {
+      if (err) {
+        throw new Error("写入数据失败");
+      } else {
+        resolve(null)
+      }
+    });
+  })
 }
