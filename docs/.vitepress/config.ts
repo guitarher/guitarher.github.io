@@ -1,5 +1,6 @@
 import { defineConfig } from 'vitepress'
-import autoSideBar from './plugins/autoSidebar'
+// import autoSideBar from './plugins/autoSidebar'
+import sidebar from './sidebar'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -7,21 +8,26 @@ export default defineConfig({
   description: "A VitePress Site",
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
-    ['script', { src: 'https://api.vvhan.com/api/bolang' }],
+    // ['script', { src: 'https://api.vvhan.com/api/bolang' }],
   ],
   vite: {
     plugins: [
-      autoSideBar()
+      // autoSideBar()
     ]
   },
   themeConfig: {
     nav: [
-      { text: '首页', link: '/' },
-      { text: '面试题库', link: '/src/js基础/' },
+      { text: '网络协议', link: '/src/网络协议/1.TCP 和 UDP的区别是什么？' },
+      { text: 'JS面试题库', link: '/src/js基础/' },
       { text: 'TS算法', link: '/src/leetcode每日一题/' },
       { text: 'Vue', link: '/src/vue/' },
+      { text: '个人项目', items: [
+        { text: 'React低代码', link: '/src/个人项目/React低代码/1.创建项目' },
+        { text: '简易版Vue3', link: '/src/个人项目/简易版Vue3/1.前言' }
+      ] }, 
       { text: '随笔', link: '/src/随笔/' }
     ],
+    sidebar,
     socialLinks: [
       { icon: 'github', link: 'https://gitee.com/guitarher' }
     ],
@@ -47,6 +53,13 @@ export default defineConfig({
           }
         }
       }
-    }
-  }
+    },
+    docFooter: { prev: '上一篇', next: '下一篇' },
+  },
+  markdown: {
+    theme: {
+      light: "min-dark",
+      dark: "min-light",
+    },
+  },
 })

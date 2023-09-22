@@ -22,7 +22,7 @@ const btnClick = () => {
   <div class="container">
     <div class="mask">
       <div class="left">
-        <h1 class="title">欢迎来到我的博客</h1>
+        <h1 class="title">Good Good Learn, Day Day Up.</h1>
         <p class="sub-title">{{ subTitle }}</p>
         <button @click="btnClick" class="btn">LeetCode每日一练</button>
       </div>
@@ -56,7 +56,7 @@ const btnClick = () => {
   padding: 100px;
 }
 .left{
-  flex: 1;
+  flex: 2;
   color: #fff;
 }
 
