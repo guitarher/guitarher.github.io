@@ -4,4 +4,4 @@
 /node_modules
 
 # production
-/docs/dist
+/docs/.vitepress/dist

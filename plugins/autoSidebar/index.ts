@@ -6,8 +6,6 @@ import type { Plugin, UserConfig, ViteDevServer } from 'vite'
 import type { DefaultTheme, SiteConfig } from 'vitepress'
 import { FileInfo, Options } from './types'
 
-const mdRelationMap = new Map<string, string>()
-
 export default function (options: Options = {}): Plugin {
   return {
     name: 'auto-sidebar',
@@ -56,7 +54,7 @@ export default function (options: Options = {}): Plugin {
 
       // 生成侧边栏目录
       const sidebar = generateSidebar(data)
-      _config.vitepress.site.themeConfig.sidebar = sidebar
+      // _config.vitepress.site.themeConfig.sidebar = sidebar
 
       return _config
     },
@@ -143,10 +141,12 @@ function generateSidebar(structuredData: FileInfo[]): DefaultTheme.Sidebar {
     if(name === 'src'){
       for (const { name, children: subChildren } of children) {
         const traverArr = subChildren.filter(v => v.name !== 'index.md')
-        sidebar[`/src/${name}/`] = traverseSubFile(traverArr, `/src/${name}`)
+        sidebar[`/src/${name}/`] = traverseSubFile(traverArr, `./src/${name}`)
       }
     }
   }
+
+  console.log('sidebar', sidebar)
 
   function traverseSubFile(subData: FileInfo[], parentPath: string): DefaultTheme.SidebarItem[] {
     return subData.map((file) => {

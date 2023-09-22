@@ -3,23 +3,24 @@ import autoSideBar from '../../plugins/autoSidebar'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base: './',
   title: "范范的前端小记",
   description: "A VitePress Site",
   head: [
-    ['link', { rel: 'icon', href: '/public/favicon.ico' }],
+    ['link', { rel: 'icon', href: './favicon.ico' }],
     ['script', { src: 'https://api.vvhan.com/api/bolang' }],
   ],
   vite: {
     plugins: [
-      autoSideBar()
+      // autoSideBar()
     ]
   },
   themeConfig: {
     nav: [
       { text: '首页', link: '/' },
       { text: '面试题库', link: '/src/js基础面试题/' },
-      { text: 'TS算法', link: '/src/leetcode每日一题/' },
-      { text: '随笔', link: '/src/随笔/' },
+      { text: 'TS算法', link: '/leetcode每日一题/' },
+      { text: '随笔', link: '/随笔/' },
     ],
     socialLinks: [
       { icon: 'github', link: 'https://gitee.com/guitarher' }
