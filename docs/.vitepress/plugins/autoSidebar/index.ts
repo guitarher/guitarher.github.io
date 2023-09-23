@@ -22,8 +22,9 @@ export default function (options: Options = {}): Plugin {
         server.restart()
       } catch (error) {
         console.error(error)
-        server.restart()
       }
+
+      return [...modules]
     },
 
     async config(config) {
@@ -76,8 +77,6 @@ export default function (options: Options = {}): Plugin {
           if(error){
             console.log(`创建失败：${error}`)
           }
-          // 创建成功
-          console.log(`创建成功！`)
       })
 
       return _config
@@ -131,7 +130,6 @@ function serializationPaths(paths: string[], { settings = {} }: Options = {}, sr
 
 /**
  * 对结构化后的多级数组数据进行逐级排序
- * 优先按 sort 排序，其次时间戳排序，navSort 始终优先于时间戳
  */
 function sortStructuredData(data: FileInfo[], compareFn?: (a: FileInfo, b: FileInfo) => number): FileInfo[] {
   if (typeof compareFn !== 'function') {
@@ -171,7 +169,8 @@ function generateSidebar(structuredData: FileInfo[]): DefaultTheme.Sidebar {
   }
 
   function traverseSubFile(subData: FileInfo[], parentPath: string): DefaultTheme.SidebarItem[] {
-    const sortArr = subData.sort((pre, cur) => {
+    // 排序
+    subData.sort((pre, cur) => {
       const { name: preName } = pre
       const { name: curName } = cur
       const preNameArr = preName.split('.')
@@ -183,6 +182,7 @@ function generateSidebar(structuredData: FileInfo[]): DefaultTheme.Sidebar {
 
       return -1
     })
+
     return subData.map((file) => {
       const filePath = `${parentPath}/${file.name}`
       const fileName = file.title || file.name.replace('.md', '')
@@ -215,6 +215,6 @@ function clearFile(filePath: string) {
       } else {
         resolve(null)
       }
-    });
+    })
   })
 }

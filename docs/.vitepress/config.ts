@@ -1,8 +1,12 @@
 import { defineConfig } from 'vitepress'
-// import autoSideBar from './plugins/autoSidebar'
+import autoSideBar from './plugins/autoSidebar'
 import sidebar from './sidebar'
 
 // https://vitepress.dev/reference/site-config
+// @ts-ignore
+const environment = process.env.NODE_ENV
+const __DEV__ = environment === "development"
+
 export default defineConfig({
   title: "范范的前端小记",
   description: "A VitePress Site",
@@ -12,7 +16,7 @@ export default defineConfig({
   ],
   vite: {
     plugins: [
-      // autoSideBar()
+      __DEV__ && autoSideBar()
     ]
   },
   themeConfig: {
@@ -22,12 +26,12 @@ export default defineConfig({
       { text: 'TS算法', link: '/src/leetcode每日一题/' },
       { text: 'Vue', link: '/src/vue/' },
       { text: '个人项目', items: [
-        { text: 'React低代码', link: '/src/个人项目/React低代码/1.创建项目' },
+        { text: 'React低代码', link: '/src/个人项目/React低代码/1.项目介绍' },
         { text: '简易版Vue3', link: '/src/个人项目/简易版Vue3/1.前言' }
       ] }, 
       { text: '随笔', link: '/src/随笔/' }
     ],
-    sidebar,
+    sidebar: __DEV__ ? {} : sidebar,
     socialLinks: [
       { icon: 'github', link: 'https://gitee.com/guitarher' }
     ],
@@ -58,8 +62,8 @@ export default defineConfig({
   },
   markdown: {
     theme: {
-      light: "min-dark",
-      dark: "min-light",
+      light: "slack-dark",
+      dark: "slack-ochin",
     },
   },
 })

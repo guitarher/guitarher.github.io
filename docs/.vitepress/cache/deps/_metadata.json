@@ -5,7 +5,7 @@
     "vue": {
       "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "763dce29",
+      "fileHash": "4cc621c4",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
@@ -17,7 +17,7 @@
     "vitepress > @vueuse/integrations/useFocusTrap": {
       "src": "../../../../node_modules/@vueuse/integrations/useFocusTrap.mjs",
       "file": "vitepress___@vueuse_integrations_useFocusTrap.js",
-      "fileHash": "e60e0016",
+      "fileHash": "c016bd0e",
       "needsInterop": false
     },
     "vitepress > mark.js/src/vanilla.js": {
