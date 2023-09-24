@@ -22,9 +22,8 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: '网络协议', link: '/src/网络协议/1.TCP 和 UDP的区别是什么？' },
-      { text: 'JS面试题库', link: '/src/js基础/' },
+      { text: '前端面试题', link: '/src/前端面试题/' },
       { text: 'TS算法', link: '/src/leetcode每日一题/' },
-      { text: 'Vue', link: '/src/vue/' },
       { text: '个人项目', items: [
         { text: 'React低代码', link: '/src/个人项目/React低代码/1.项目介绍' },
         { text: '简易版Vue3', link: '/src/个人项目/简易版Vue3/1.前言' }
