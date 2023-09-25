@@ -9,7 +9,6 @@ import { FileInfo, Options } from './types'
 export default function (options: Options = {}): Plugin {
   return {
     name: 'auto-sidebar',
-    enforce: 'post',
 
     handleHotUpdate(context){
       const { file, modules, server } = context
@@ -19,6 +18,7 @@ export default function (options: Options = {}): Plugin {
       
       try {
         // 如果文件变化重新开启服务
+        server.close()
         server.restart()
       } catch (error) {
         console.error(error)
