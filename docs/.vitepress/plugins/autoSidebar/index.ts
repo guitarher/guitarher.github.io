@@ -163,26 +163,14 @@ function generateSidebar(structuredData: FileInfo[]): DefaultTheme.Sidebar {
     if(name === 'src'){
       for (const { name, children: subChildren } of children) {
         const traverArr = subChildren.filter(v => v.name !== 'index.md')
+        sortByNo(traverArr)
         sidebar[`/src/${name}/`] = traverseSubFile(traverArr, `/src/${name}`)
       }
     }
   }
 
   function traverseSubFile(subData: FileInfo[], parentPath: string): DefaultTheme.SidebarItem[] {
-    // 排序
-    subData.sort((pre, cur) => {
-      const { name: preName } = pre
-      const { name: curName } = cur
-      const preNameArr = preName.split('.')
-      const curNameArr = curName.split('.')
-
-      if(!isNaN(+preNameArr[0]) && !isNaN(+curNameArr[0])){
-        return (+preNameArr[0]) - (+curNameArr[0])
-      }
-
-      return -1
-    })
-
+    sortByNo(subData)
     return subData.map((file) => {
       const filePath = `${parentPath}/${file.name}`
       const fileName = file.title || file.name.replace('.md', '')
@@ -216,5 +204,21 @@ function clearFile(filePath: string) {
         resolve(null)
       }
     })
+  })
+}
+
+function sortByNo(data){
+  // 排序
+  data.sort((pre, cur) => {
+    const { name: preName } = pre
+    const { name: curName } = cur
+    const preNameArr = preName.split('.')
+    const curNameArr = curName.split('.')
+
+    if(!isNaN(+preNameArr[0]) && !isNaN(+curNameArr[0])){
+      return (+preNameArr[0]) - (+curNameArr[0])
+    }
+
+    return -1
   })
 }
