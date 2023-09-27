@@ -16,7 +16,7 @@ export default defineConfig({
   ],
   vite: {
     plugins: [
-      __DEV__ && autoSideBar()
+      autoSideBar()
     ]
   },
   themeConfig: {
