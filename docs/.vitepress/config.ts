@@ -16,7 +16,7 @@ export default defineConfig({
   ],
   vite: {
     plugins: [
-      autoSideBar()
+      __DEV__ ? autoSideBar() : null
     ]
   },
   themeConfig: {
@@ -30,7 +30,7 @@ export default defineConfig({
       ] }, 
       { text: '随笔', link: '/src/随笔/' }
     ],
-    sidebar: sidebar,
+    sidebar: __DEV__ ? {} : sidebar,
     socialLinks: [
       { icon: 'github', link: 'https://gitee.com/guitarher' }
     ],
