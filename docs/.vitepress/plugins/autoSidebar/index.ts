@@ -28,6 +28,7 @@ export default function (options: Options = {}): Plugin {
     },
 
     async config(config) {
+      console.log('插件运行')
       const _config = config as UserConfig & { vitepress: SiteConfig }
 
       // 从vitepress配置中获取文档根路径与要排除的文档

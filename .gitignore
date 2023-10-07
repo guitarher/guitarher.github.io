@@ -2,7 +2,7 @@
 
 # dependencies
 /node_modules
+/docs/.vitepress/cache
 
 # production
 /docs/.vitepress/dist
-/docs/.vitepress/cache/*
