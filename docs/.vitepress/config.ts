@@ -30,7 +30,7 @@ export default defineConfig({
       ] }, 
       { text: '随笔', link: '/src/随笔/' }
     ],
-    sidebar: __DEV__ ? {} : sidebar,
+    sidebar: sidebar,
     socialLinks: [
       { icon: 'github', link: 'https://gitee.com/guitarher' }
     ],
