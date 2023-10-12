@@ -16,7 +16,7 @@ export default defineConfig({
   ],
   vite: {
     plugins: [
-      __DEV__ ? autoSideBar() : null
+      autoSideBar()
     ]
   },
   themeConfig: {
@@ -25,7 +25,7 @@ export default defineConfig({
       { text: '前端面试题', link: '/src/前端面试题/' },
       { text: 'TS算法', link: '/src/leetcode每日一题/' },
       { text: '个人项目', items: [
-        { text: 'React低代码', link: '/src/个人项目/React低代码/1.项目介绍' },
+        // { text: 'React低代码', link: '/src/个人项目/React低代码/1.项目介绍' },
         { text: '简易版Vue3', link: '/src/个人项目/简易版Vue3/1.前言' }
       ] }, 
       { text: '随笔', link: '/src/随笔/' }

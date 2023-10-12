@@ -28,7 +28,10 @@ export default function (options: Options = {}): Plugin {
     },
 
     async config(config) {
-      console.log('插件运行')
+      // @ts-ignore
+      const environment = process.env.NODE_ENV
+      const __DEV__ = environment === "development"
+
       const _config = config as UserConfig & { vitepress: SiteConfig }
 
       // 从vitepress配置中获取文档根路径与要排除的文档
@@ -62,7 +65,9 @@ export default function (options: Options = {}): Plugin {
 
       // 生成侧边栏目录
       const sidebar = generateSidebar(data)
-      _config.vitepress.site.themeConfig.sidebar = sidebar
+      if(__DEV__){
+        _config.vitepress.site.themeConfig.sidebar = sidebar
+      }
 
       
       // @ts-ignore
