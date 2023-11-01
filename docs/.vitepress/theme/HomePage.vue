@@ -152,7 +152,7 @@ const btnClick = () => {
   /* width: 100%;
   height: calc(100vh - 64px); */
   background:  no-repeat cover;
-  background: center / cover no-repeat url('../../public/home-bg.png');
+  background: center / cover no-repeat url('../../public/home-bg.jpg');
 }
 .mask{
   width: 100%;
