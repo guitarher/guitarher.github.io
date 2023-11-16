@@ -57,14 +57,15 @@ export default function (options: Options = {}): Plugin {
         .map((path) => normalize(path))
         .sort()
 
-        // 处理文件路径数组为多级结构化数据
-        const data = serializationPaths(paths, options, srcDir)
+      // 处理文件路径数组为多级结构化数据
+      const data = serializationPaths(paths, options, srcDir)
 
       // 数据排序
       sortStructuredData(data, options.compareFn)
 
       // 生成侧边栏目录
       const sidebar = generateSidebar(data)
+
       if(__DEV__){
         _config.vitepress.site.themeConfig.sidebar = sidebar
       }
@@ -102,7 +103,6 @@ function serializationPaths(paths: string[], { settings = {} }: Options = {}, sr
   for (const key in settings) {
     settings[join(srcDir, key)] = settings[key]
   }
-
   const root: FileInfo[] = []
 
   for (const path of paths) {
@@ -165,7 +165,7 @@ function sortStructuredData(data: FileInfo[], compareFn?: (a: FileInfo, b: FileI
 function generateSidebar(structuredData: FileInfo[]): DefaultTheme.Sidebar {
   const sidebar: DefaultTheme.Sidebar = {}
 
-  for (const { name, children } of structuredData[0].children) {
+  for (const { name, children } of structuredData[1].children) {
     if(name === 'src'){
       for (const { name, children: subChildren } of children) {
         const traverArr = subChildren.filter(v => v.name !== 'index.md')
