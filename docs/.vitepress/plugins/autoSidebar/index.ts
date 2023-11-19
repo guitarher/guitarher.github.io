@@ -165,7 +165,9 @@ function sortStructuredData(data: FileInfo[], compareFn?: (a: FileInfo, b: FileI
 function generateSidebar(structuredData: FileInfo[]): DefaultTheme.Sidebar {
   const sidebar: DefaultTheme.Sidebar = {}
 
-  for (const { name, children } of structuredData[1].children) {
+  const sourceData = structuredData.find((item) => item.name === 'docs')
+
+  for (const { name, children } of sourceData!.children) {
     if(name === 'src'){
       for (const { name, children: subChildren } of children) {
         const traverArr = subChildren.filter(v => v.name !== 'index.md')
