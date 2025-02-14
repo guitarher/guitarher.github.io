@@ -21,6 +21,10 @@ export default defineConfig({
   },
   themeConfig: {
     nav: [
+      { text: '前端基础篇', items: [
+        { text: '浏览器篇', link: '/src/前端基础/浏览器篇/1.浏览器渲染原理' },
+        { text: '工程化篇', link: '/src/前端基础/工程化篇/前言' }
+      ] },
       { text: '网络协议', link: '/src/网络协议/1.TCP 和 UDP的区别是什么？' },
       { text: '前端面试题', link: '/src/前端面试题/' },
       { text: 'TS算法', link: '/src/leetcode每日一题/' },
@@ -28,7 +32,6 @@ export default defineConfig({
         // { text: 'React低代码', link: '/src/个人项目/React低代码/1.项目介绍' },
         { text: '简易版Vue3', link: '/src/个人项目/简易版Vue3/1.前言' }
       ] }, 
-      { text: '随笔', link: '/src/随笔/' }
     ],
     sidebar: __DEV__ ? {} : sidebar,
     socialLinks: [
