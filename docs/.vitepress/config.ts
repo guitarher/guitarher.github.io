@@ -23,9 +23,10 @@ export default defineConfig({
     nav: [
       { text: '前端基础篇', items: [
         { text: '浏览器篇', link: '/src/前端基础/浏览器篇/1.浏览器渲染原理' },
-        { text: '工程化篇', link: '/src/前端基础/工程化篇/前言' }
+        { text: '工程化篇', link: '/src/前端基础/工程化篇/前言' },
+        { text: '网络篇', link: '/src/前端基础/网络篇/1.基本概念' },
       ] },
-      { text: '网络协议', link: '/src/网络协议/1.TCP 和 UDP的区别是什么？' },
+      // { text: '网络协议', link: '/src/网络协议/1.TCP 和 UDP的区别是什么？' },
       { text: '前端面试题', link: '/src/前端面试题/' },
       { text: 'TS算法', link: '/src/leetcode每日一题/' },
       { text: '个人项目', items: [

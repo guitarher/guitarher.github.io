@@ -1,10 +1,12 @@
 ## 前端面试题汇总
+
 <script setup>
   const dataMap = {
     js: '1.JS',
     react: '2.Vue',
     vue: '3.React',
-    webpack: '4.Webpack'
+    webpack: '4.Webpack',
+    network: '5.网络协议',
   }
   const data = [
     {
@@ -204,28 +206,101 @@
         },
         { text: "8.Code Splitting是什么", link: "/src/前端面试题/4.Webpack/8.Code Splitting是什么" }
       ]
+    },
+    {
+      text: "5.网络协议",
+      collapsed: false,
+      items: [
+        { text: "1.TCP 和 UDP的区别是什么？", link: "/src/网络协议/1.TCP 和 UDP的区别是什么？" },
+        {
+          text: "2.Http 3.0 是基于 udp 的，那么它是如何保证传输可靠性的？",
+          link: "/src/网络协议/2.Http 3.0 是基于 udp 的，那么它是如何保证传输可靠性的？",
+        },
+        {
+          text: "3.https是如何保证安全的，又是如何保证不被中间人攻击的？",
+          link: "/src/网络协议/3.https是如何保证安全的，又是如何保证不被中间人攻击的？",
+        },
+        { text: "4.说下 websocket 的连接原理", link: "/src/网络协议/4.说下 websocket 的连接原理" },
+        { text: "5.websocket 中的 Handshaking 是什么？", link: "/src/网络协议/5.websocket 中的 Handshaking 是什么？" },
+        { text: "6.说说DOS及DDOS的原理及防御方式", link: "/src/网络协议/6.说说DOS及DDOS的原理及防御方式" },
+        { text: "7.说一说http缓存", link: "/src/网络协议/7.说一说http缓存" },
+        { text: "8.http_proxy的原理是什么", link: "/src/网络协议/8.http_proxy的原理是什么" },
+        { text: "9.gzip 的原理是什么，如何配置", link: "/src/网络协议/9.gzip 的原理是什么，如何配置" },
+        { text: "10.可以对图片开启 gzip 压缩吗，为什么", link: "/src/网络协议/10.可以对图片开启 gzip 压缩吗，为什么" },
+        { text: "11.http 响应头中的 ETag 值是如何生成的", link: "/src/网络协议/11.http 响应头中的 ETag 值是如何生成的" },
+        {
+          text: "12.http 服务中静态文件的 Last-Modified 是根据什么生成的",
+          link: "/src/网络协议/12.http 服务中静态文件的 Last-Modified 是根据什么生成的",
+        },
+        {
+          text: "13.既然 http 是无状态协议，那它是如何保持登录状态",
+          link: "/src/网络协议/13.既然 http 是无状态协议，那它是如何保持登录状态",
+        },
+        {
+          text: "14.localhost3000与localhost5000的cookie信息是否共享？",
+          link: "/src/网络协议/14.localhost3000与localhost5000的cookie信息是否共享？",
+        },
+        {
+          text: "15.http 响应头中如果 content-type 为 applicationoctet-stream，则代表什么意思",
+          link: "/src/网络协议/15.http 响应头中如果 content-type 为 applicationoctet-stream，则代表什么意思",
+        },
+        {
+          text: "16.http 向 https 做重定向应该使用哪个状态码",
+          link: "/src/网络协议/16.http 向 https 做重定向应该使用哪个状态码",
+        },
+        {
+          text: "17.http 响应头中的 Date 与 Last-Modified 有什么不同，网站部署时需要注意什么",
+          link: "/src/网络协议/17.http 响应头中的 Date 与 Last-Modified 有什么不同，网站部署时需要注意什么",
+        },
+        { text: "18.http 1.1 中的 keep-alive 有什么作用", link: "/src/网络协议/18.http 1.1 中的 keep-alive 有什么作用" },
+        {
+          text: "19.当在浏览器中看到某资源使用了 http2 后，使用 curl 为什么看到的仍是 http 1.1",
+          link: "/src/网络协议/19.当在浏览器中看到某资源使用了 http2 后，使用 curl 为什么看到的仍是 http 1.1",
+        },
+        { text: "20.什么是队首阻塞，如何解决", link: "/src/网络协议/20.什么是队首阻塞，如何解决" },
+        { text: "21.什么是 CSRF 攻击", link: "/src/网络协议/21.什么是 CSRF 攻击" },
+        { text: "22.no-cache 与 no-store 的区别是什么", link: "/src/网络协议/22.no-cache 与 no-store 的区别是什么" },
+        { text: "23.cookie 有哪些字段", link: "/src/网络协议/23.cookie 有哪些字段" },
+        { text: "24.http2 中的首部压缩的实现原理是什么", link: "/src/网络协议/24.http2 中的首部压缩的实现原理是什么" },
+        {
+          text: "25.http 请求头中的 X-Forwarded-For 代表什么意思",
+          link: "/src/网络协议/25.http 请求头中的 X-Forwarded-For 代表什么意思",
+        },
+        {
+          text: "26.fetch 中 credentials 指什么意思，可以取什么值",
+          link: "/src/网络协议/26.fetch 中 credentials 指什么意思，可以取什么值",
+        },
+      ]
     }
   ]
 </script>
 
-## JS部分
+## JS 部分
+
 <div v-for="(item, index) in data.find(d => d.text === dataMap['js'])?.items" :key="index">
   <a :href="item.link.replace('/src/前端面试题', '.')">{{item.text}}</a>
 </div>
 
-## Vue部分
+## Vue 部分
+
 <div v-for="(item, index) in data.find(d => d.text === dataMap['vue'])?.items" :key="index">
   <a :href="item.link.replace('/src/前端面试题', '.')">{{item.text}}</a>
 </div>
 
-## React部分
+## React 部分
+
 <div v-for="(item, index) in data.find(d => d.text === dataMap['react'])?.items" :key="index">
   <a :href="item.link.replace('/src/前端面试题', '.')">{{item.text}}</a>
 </div>
 
-## Webpack部分
+## Webpack 部分
+
 <div v-for="(item, index) in data.find(d => d.text === dataMap['webpack'])?.items" :key="index">
   <a :href="item.link.replace('/src/前端面试题', '.')">{{item.text}}</a>
 </div>
 
+## 网络协议部分
 
+<div v-for="(item, index) in data.find(d => d.text === dataMap['network'])?.items" :key="index">
+  <a :href="item.link.replace('/src/前端面试题', '.')">{{item.text}}</a>
+</div>
